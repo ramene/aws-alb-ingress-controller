@@ -15,53 +15,26 @@ In this example, you'll
 1. Create a cluster:
 
 ```bash
-$ eksctl create cluster \
->     --name=eks-firstrun \
->     --nodes-min=2 \
->     --nodes-max=3 \
->     --kubeconfig=./kubeconfig \
->     --ssh-public-key=eks-che \
->     --region=us-west-2
-2018-09-01T18:01:51-04:00 [ℹ]  setting availability zones to [us-west-2b us-west-2a us-west-2c]
-2018-09-01T18:01:51-04:00 [ℹ]  SSH public key file "eks-che" does not exist; will assume existing EC2 key pair
-2018-09-01T18:01:51-04:00 [ℹ]  found EC2 key pair "eks-che"
-2018-09-01T18:01:51-04:00 [ℹ]  creating EKS cluster "eks-firstrun" in "us-west-2" region
-2018-09-01T18:01:51-04:00 [ℹ]  creating VPC stack "EKS-eks-firstrun-VPC"
-2018-09-01T18:01:51-04:00 [ℹ]  creating ServiceRole stack "EKS-eks-firstrun-ServiceRole"
-2018-09-01T18:02:31-04:00 [✔]  created ServiceRole stack "EKS-eks-firstrun-ServiceRole"
-2018-09-01T18:02:51-04:00 [✔]  created VPC stack "EKS-eks-firstrun-VPC"
-2018-09-01T18:02:51-04:00 [ℹ]  creating ControlPlane stack "EKS-eks-firstrun-ControlPlane"
-2018-09-01T18:11:53-04:00 [✔]  created ControlPlane stack "EKS-eks-firstrun-ControlPlane"
-2018-09-01T18:11:53-04:00 [ℹ]  creating DefaultNodeGroup stack "EKS-eks-firstrun-DefaultNodeGroup"
-2018-09-01T18:15:37-04:00 [✔]  created DefaultNodeGroup stack "EKS-eks-firstrun-DefaultNodeGroup"
-2018-09-01T18:15:37-04:00 [✔]  all EKS cluster "eks-firstrun" resources has been created
-2018-09-01T18:15:37-04:00 [✔]  saved kubeconfig as "./kubeconfig"
-2018-09-01T18:15:42-04:00 [ℹ]  the cluster has 0 nodes
-2018-09-01T18:15:42-04:00 [ℹ]  waiting for at least 2 nodes to become ready
-2018-09-01T18:16:10-04:00 [ℹ]  the cluster has 3 nodes
-2018-09-01T18:16:10-04:00 [ℹ]  node "ip-192-168-169-249.us-west-2.compute.internal" is ready
-2018-09-01T18:16:10-04:00 [ℹ]  node "ip-192-168-201-43.us-west-2.compute.internal" is ready
-2018-09-01T18:16:10-04:00 [ℹ]  node "ip-192-168-94-96.us-west-2.compute.internal" is ready
-2018-09-01T18:16:45-04:00 [ℹ]  kubectl command should work with "./kubeconfig", try 'kubectl --kubeconfig=./kubeconfig get nodes'
-2018-09-01T18:16:45-04:00 [✔]  EKS cluster "eks-firstrun" in "us-west-2" region is ready
-```
-
-Should result in your landscape looking similar to the following.
-
-```bash
-$ kubectl --kubeconfig=./kubeconfig get po,svc,pvc,ing -o wide --all-namespaces
-NAMESPACE     NAME                           READY     STATUS    RESTARTS   AGE       IP                NODE
-kube-system   pod/aws-node-5rf2k             1/1       Running   0          42m       192.168.169.249   ip-192-168-169-249.us-west-2.compute.internal
-kube-system   pod/aws-node-bn5ff             1/1       Running   0          42m       192.168.201.43    ip-192-168-201-43.us-west-2.compute.internal
-kube-system   pod/aws-node-zjwv6             1/1       Running   1          42m       192.168.94.96     ip-192-168-94-96.us-west-2.compute.internal
-kube-system   pod/kube-dns-7cc87d595-6gg25   3/3       Running   0          47m       192.168.90.120    ip-192-168-94-96.us-west-2.compute.internal
-kube-system   pod/kube-proxy-dlwrx           1/1       Running   0          42m       192.168.201.43    ip-192-168-201-43.us-west-2.compute.internal
-kube-system   pod/kube-proxy-jx47v           1/1       Running   0          42m       192.168.94.96     ip-192-168-94-96.us-west-2.compute.internal
-kube-system   pod/kube-proxy-ttq2q           1/1       Running   0          42m       192.168.169.249   ip-192-168-169-249.us-west-2.compute.internal
-
-NAMESPACE     NAME                 TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)         AGE       SELECTOR
-default       service/kubernetes   ClusterIP   10.100.0.1    <none>        443/TCP         47m       <none>
-kube-system   service/kube-dns     ClusterIP   10.100.0.10   <none>        53/UDP,53/TCP   47m       k8s-app=kube-dns
+$ eksctl create cluster
+2018-08-14T11:19:09-07:00 [ℹ]  setting availability zones to [us-west-2c us-west-2a us-west-2b]
+2018-08-14T11:19:09-07:00 [ℹ]  importing SSH public key "/Users/kamador/.ssh/id_rsa.pub" as "eksctl-exciting-gopher-1534270749-b7:71:da:f6:f3:63:7a:ee:ad:7a:10:37:28:ff:44:d1"
+2018-08-14T11:19:10-07:00 [ℹ]  creating EKS cluster "exciting-gopher-1534270749" in "us-west-2" region
+2018-08-14T11:19:10-07:00 [ℹ]  creating ServiceRole stack "EKS-exciting-gopher-1534270749-ServiceRole"
+2018-08-14T11:19:10-07:00 [ℹ]  creating VPC stack "EKS-exciting-gopher-1534270749-VPC"
+2018-08-14T11:19:50-07:00 [✔]  created ServiceRole stack "EKS-exciting-gopher-1534270749-ServiceRole"
+2018-08-14T11:20:30-07:00 [✔]  created VPC stack "EKS-exciting-gopher-1534270749-VPC"
+2018-08-14T11:20:30-07:00 [ℹ]  creating control plane "exciting-gopher-1534270749"
+2018-08-14T11:31:52-07:00 [✔]  created control plane "exciting-gopher-1534270749"
+2018-08-14T11:31:52-07:00 [ℹ]  creating DefaultNodeGroup stack "EKS-exciting-gopher-1534270749-DefaultNodeGroup"
+2018-08-14T11:35:33-07:00 [✔]  created DefaultNodeGroup stack "EKS-exciting-gopher-1534270749-DefaultNodeGroup"
+2018-08-14T11:35:33-07:00 [✔]  all EKS cluster "exciting-gopher-1534270749" resources has been created
+2018-08-14T11:35:33-07:00 [✔]  saved kubeconfig as "/Users/kamador/.kube/config"
+2018-08-14T11:35:34-07:00 [ℹ]  the cluster has 0 nodes
+2018-08-14T11:35:34-07:00 [ℹ]  waiting for at least 2 nodes to become ready
+2018-08-14T11:36:05-07:00 [ℹ]  the cluster has 2 nodes
+2018-08-14T11:36:05-07:00 [ℹ]  node "ip-192-168-139-176.us-west-2.compute.internal" is ready
+2018-08-14T11:36:05-07:00 [ℹ]  node "ip-192-168-214-126.us-west-2.compute.internal" is ready
+2018-08-14T11:36:05-07:00 [✔]  EKS cluster "exciting-gopher-1534270749" in "us-west-2" region is ready
 ```
 
 # Deploy the alb-ingress-controller
@@ -136,11 +109,11 @@ kube-system   service/kube-dns     ClusterIP   10.100.0.10   <none>        53/UD
 
 1.  Create all the echoserver resources (namespace, service, deployment)
 
-     ```bash
-	kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-namespace.yaml && \
-	kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-service.yaml && \
-	kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-deployment.yaml
-      ```
+    ```
+    $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-namespace.yaml &&\
+     kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-service.yaml &&\
+     kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-deployment.yaml &&\
+    ```
 
 1.  List all the resources to ensure they were created.
 
@@ -168,43 +141,38 @@ kube-system   service/kube-dns     ClusterIP   10.100.0.10   <none>        53/UD
     - Edit the `alb.ingress.kubernetes.io/subnets` annotation to include at least two subnets. If you'd like to use external dns, alter the host field to a domain that you own in Route 53. Assuming you managed `example.com` in Route 53.
 
     ```bash
-    $ eksctl get cluster eks-firstrun
+    $ eksctl get cluster exciting-gopher-1534270749
     NAME		                VERSION STATUS         CREATED			VPC						SUBNETS				                SECURITYGROUPS
     exciting-gopher-1534270749	1.10	ACTIVE	2018-08-14T18:20:32Z	vpc-0aa01b07b3c922c9c	subnet-05e1c98ed0f5b109e,subnet-07f5bb81f661df61b,subnet-0a4e6232630820516	sg-05ceb5eee9fd7cac4
     ```
 
-```yaml
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: echoserver
-  namespace: echoserver
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/subnets: subnet-004647c4dee6309b2,subnet-01b880ffbb9e1a2c5
-    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
-spec:
-  rules:
-    - host: echoserver.eks-firstrun.com
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: echoserver
-              servicePort: 80
-```
+    ```yaml
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+        name: echoserver
+        namespace: echoserver
+        annotations:
+            alb.ingress.kubernetes.io/scheme: internet-facing
+            alb.ingress.kubernetes.io/target-type: ip
+            alb.ingress.kubernetes.io/subnets: subnet-05e1c98ed0f5b109e,subnet-07f5bb81f661df61b,subnet-0a4e6232630820516
+            alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+    spec:
+        rules:
+        - host: echoserver.example.com
+            http:
+            paths:
+    ```
 
-1.  Adding tags to subnets for auto-discovery.
+	1.  Adding tags to subnets for auto-discovery.
 
 	    In order for the alb-ingress-controller to know where to deploy its ALBs, you must include the following tags on desired subnets.
 
-- `kubernetes.io/cluster/$CLUSTER_NAME` where `$CLUSTER_NAME` is the same `CLUSTER_NAME` specified in the above step. (tag may already exist)
-- `kubernetes.io/role/internal-elb` should be set for internal load balancers.
-- `kubernetes.io/role/elb` should be set for internet-facing load balancers.
+	    - `kubernetes.io/cluster/$CLUSTER_NAME` where `$CLUSTER_NAME` is the same `CLUSTER_NAME` specified in the above step.
+	    - `kubernetes.io/role/internal-elb` should be set for internal load balancers.
+	    - `kubernetes.io/role/elb` should be set for internet-facing load balancers.
 
-An example of a subnet with the correct tags for the cluster `joshcalico` is as follows.
+	    An example of a subnet with the correct tags for the cluster `joshcalico` is as follows.
 
 	    <img src="imgs/subnet-tags.png" width="600">
 
@@ -288,7 +256,7 @@ An example of a subnet with the correct tags for the cluster `joshcalico` is as 
 1.  Verify the DNS has propogated
 
     ```bash
-    dig echoserver.domain.com
+    dig echoserver.josh-test-dns.com
 
     ;; QUESTION SECTION:
     ;echoserver.josh-test-dns.com.  IN      A
@@ -302,7 +270,7 @@ An example of a subnet with the correct tags for the cluster `joshcalico` is as 
 1.  Once it has, you can make a call to echoserver and it should return a response payload.
 
     ```
-    $ curl echoserver.domain.com
+    $ curl echoserver.josh-test-dns.com
 
     CLIENT VALUES:
     client_address=10.0.50.185
@@ -310,14 +278,14 @@ An example of a subnet with the correct tags for the cluster `joshcalico` is as 
     real path=/
     query=nil
     request_version=1.1
-    request_uri=http://echoserver.domain.com:8080/
+    request_uri=http://echoserver.josh-test-dns.com:8080/
 
     SERVER VALUES:
     server_version=nginx: 1.10.0 - lua: 10001
 
     HEADERS RECEIVED:
     accept=*/*
-    host=echoserver.domain.com
+    host=echoserver.josh-test-dns.com
     user-agent=curl/7.54.0
     x-amzn-trace-id=Root=1-59c08da5-113347df69640735312371bd
     x-forwarded-for=67.173.237.250
@@ -380,7 +348,7 @@ arn:aws:iam:::XXXXXXXXXXXX:role/k8s-alb-controller
 
 Add the annotations in the template's metadata poin
 
-```yaml
+```
 spec:
 replicas: 1
 selector:
