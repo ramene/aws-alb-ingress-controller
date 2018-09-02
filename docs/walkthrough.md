@@ -194,17 +194,17 @@ spec:
             backend:
               serviceName: echoserver
               servicePort: 80
-    ```
+```
 
-	1.  Adding tags to subnets for auto-discovery.
+1.  Adding tags to subnets for auto-discovery.
 
 	    In order for the alb-ingress-controller to know where to deploy its ALBs, you must include the following tags on desired subnets.
 
-	    - `kubernetes.io/cluster/$CLUSTER_NAME` where `$CLUSTER_NAME` is the same `CLUSTER_NAME` specified in the above step. (tag may already exist)
-	    - `kubernetes.io/role/internal-elb` should be set for internal load balancers.
-	    - `kubernetes.io/role/elb` should be set for internet-facing load balancers.
+- `kubernetes.io/cluster/$CLUSTER_NAME` where `$CLUSTER_NAME` is the same `CLUSTER_NAME` specified in the above step. (tag may already exist)
+- `kubernetes.io/role/internal-elb` should be set for internal load balancers.
+- `kubernetes.io/role/elb` should be set for internet-facing load balancers.
 
-	    An example of a subnet with the correct tags for the cluster `joshcalico` is as follows.
+An example of a subnet with the correct tags for the cluster `joshcalico` is as follows.
 
 	    <img src="imgs/subnet-tags.png" width="600">
 
