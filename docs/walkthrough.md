@@ -136,11 +136,11 @@ kube-system   service/kube-dns     ClusterIP   10.100.0.10   <none>        53/UD
 
 1.  Create all the echoserver resources (namespace, service, deployment)
 
-    ```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-namespace.yaml && \
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-service.yaml && \
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-deployment.yaml
-    ```
+     ```bash
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-namespace.yaml && \
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-service.yaml && \
+	kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/master/examples/echoservice/echoserver-deployment.yaml
+      ```
 
 1.  List all the resources to ensure they were created.
 
