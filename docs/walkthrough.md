@@ -15,13 +15,14 @@ In this example, you'll
 1. Create a cluster:
 
 ```bash
-$ $ eksctl create cluster \
->     --name=eks-firstrun \
->     --nodes-min=2 \
->     --nodes-max=3 \
->     --kubeconfig=./kubeconfig \
->     --ssh-public-key=eks-che \
->     --region=us-west-2
+$ eksctl create cluster \
+     --name=eks-firstrun \
+     --nodes-min=2 \
+     --nodes-max=3 \
+     --kubeconfig=./kubeconfig \
+     --ssh-public-key=eks-che \
+     --node-type=t2.medium \
+     --region=us-west-2
 2018-08-14T11:19:09-07:00 [ℹ]  setting availability zones to [us-west-2c us-west-2a us-west-2b]
 2018-08-14T11:19:09-07:00 [ℹ]  importing SSH public key "/Users/kamador/.ssh/id_rsa.pub" as "eksctl-exciting-gopher-1534270749-b7:71:da:f6:f3:63:7a:ee:ad:7a:10:37:28:ff:44:d1"
 2018-08-14T11:19:10-07:00 [ℹ]  creating EKS cluster "exciting-gopher-1534270749" in "us-west-2" region
@@ -42,6 +43,9 @@ $ $ eksctl create cluster \
 2018-08-14T11:36:05-07:00 [ℹ]  node "ip-192-168-214-126.us-west-2.compute.internal" is ready
 2018-08-14T11:36:05-07:00 [✔]  EKS cluster "exciting-gopher-1534270749" in "us-west-2" region is ready
 ```
+# Enable Helm & Tiller with RBAC
+
+...
 
 # Deploy the alb-ingress-controller
 
