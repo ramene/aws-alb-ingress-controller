@@ -45,7 +45,21 @@ $ eksctl create cluster \
 ```
 # Enable Helm & Tiller with RBAC
 
-...
+`$ kubectl create serviceaccount --namespace kube-system tiller`
+  serviceaccount "tiller" created
+
+`$ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller`
+  clusterrolebinding "tiller-cluster-rule" created
+
+`$ kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'`
+  deployment "tiller-deploy" patched
+
+ `$ helm repo update`
+Hang tight while we grab the latest from your chart repositories...
+...Skip local chart repository
+...Successfully got an update from the "monocular" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete. ⎈ Happy Helming!*
 
 # Deploy the alb-ingress-controller
 
