@@ -20,7 +20,7 @@ $ eksctl create cluster \
      --nodes-min=2 \
      --nodes-max=3 \
      --kubeconfig=./kubeconfig \
-     --ssh-public-key=eks-che \
+     --ssh-public-key=che \
      --node-type=t2.medium \
      --region=us-west-2
 2018-08-14T11:19:09-07:00 [ℹ]  setting availability zones to [us-west-2c us-west-2a us-west-2b]
