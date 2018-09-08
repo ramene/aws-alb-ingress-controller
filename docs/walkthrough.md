@@ -16,7 +16,7 @@ In this example, you'll
 
 ```bash
 $ eksctl create cluster \
-     --name=eks-firstrun \
+     --name=eclipse-che \
      --nodes-min=2 \
      --nodes-max=3 \
      --kubeconfig=./kubeconfig \
