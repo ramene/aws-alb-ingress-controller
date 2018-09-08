@@ -23,25 +23,28 @@ $ eksctl create cluster \
      --ssh-public-key=che \
      --node-type=t2.medium \
      --region=us-west-2
-2018-08-14T11:19:09-07:00 [ℹ]  setting availability zones to [us-west-2c us-west-2a us-west-2b]
-2018-08-14T11:19:09-07:00 [ℹ]  importing SSH public key "/Users/kamador/.ssh/id_rsa.pub" as "eksctl-exciting-gopher-1534270749-b7:71:da:f6:f3:63:7a:ee:ad:7a:10:37:28:ff:44:d1"
-2018-08-14T11:19:10-07:00 [ℹ]  creating EKS cluster "exciting-gopher-1534270749" in "us-west-2" region
-2018-08-14T11:19:10-07:00 [ℹ]  creating ServiceRole stack "EKS-exciting-gopher-1534270749-ServiceRole"
-2018-08-14T11:19:10-07:00 [ℹ]  creating VPC stack "EKS-exciting-gopher-1534270749-VPC"
-2018-08-14T11:19:50-07:00 [✔]  created ServiceRole stack "EKS-exciting-gopher-1534270749-ServiceRole"
-2018-08-14T11:20:30-07:00 [✔]  created VPC stack "EKS-exciting-gopher-1534270749-VPC"
-2018-08-14T11:20:30-07:00 [ℹ]  creating control plane "exciting-gopher-1534270749"
-2018-08-14T11:31:52-07:00 [✔]  created control plane "exciting-gopher-1534270749"
-2018-08-14T11:31:52-07:00 [ℹ]  creating DefaultNodeGroup stack "EKS-exciting-gopher-1534270749-DefaultNodeGroup"
-2018-08-14T11:35:33-07:00 [✔]  created DefaultNodeGroup stack "EKS-exciting-gopher-1534270749-DefaultNodeGroup"
-2018-08-14T11:35:33-07:00 [✔]  all EKS cluster "exciting-gopher-1534270749" resources has been created
-2018-08-14T11:35:33-07:00 [✔]  saved kubeconfig as "/Users/kamador/.kube/config"
-2018-08-14T11:35:34-07:00 [ℹ]  the cluster has 0 nodes
-2018-08-14T11:35:34-07:00 [ℹ]  waiting for at least 2 nodes to become ready
-2018-08-14T11:36:05-07:00 [ℹ]  the cluster has 2 nodes
-2018-08-14T11:36:05-07:00 [ℹ]  node "ip-192-168-139-176.us-west-2.compute.internal" is ready
-2018-08-14T11:36:05-07:00 [ℹ]  node "ip-192-168-214-126.us-west-2.compute.internal" is ready
-2018-08-14T11:36:05-07:00 [✔]  EKS cluster "exciting-gopher-1534270749" in "us-west-2" region is ready
+2018-09-07T20:35:26-04:00 [ℹ]  setting availability zones to [us-west-2b us-west-2c us-west-2a]
+2018-09-07T20:35:26-04:00 [ℹ]  SSH public key file "che" does not exist; will assume existing EC2 key pair
+2018-09-07T20:35:26-04:00 [ℹ]  found EC2 key pair "che"
+2018-09-07T20:35:26-04:00 [ℹ]  creating EKS cluster "eclipse-che" in "us-west-2" region
+2018-09-07T20:35:26-04:00 [ℹ]  creating VPC stack "EKS-eclipse-che-VPC"
+2018-09-07T20:35:26-04:00 [ℹ]  creating ServiceRole stack "EKS-eclipse-che-ServiceRole"
+2018-09-07T20:36:08-04:00 [✔]  created ServiceRole stack "EKS-eclipse-che-ServiceRole"
+2018-09-07T20:36:49-04:00 [✔]  created VPC stack "EKS-eclipse-che-VPC"
+2018-09-07T20:36:49-04:00 [ℹ]  creating ControlPlane stack "EKS-eclipse-che-ControlPlane"
+2018-09-07T20:49:44-04:00 [✔]  created ControlPlane stack "EKS-eclipse-che-ControlPlane"
+2018-09-07T20:49:44-04:00 [ℹ]  creating DefaultNodeGroup stack "EKS-eclipse-che-DefaultNodeGroup"
+2018-09-07T20:53:13-04:00 [✔]  created DefaultNodeGroup stack "EKS-eclipse-che-DefaultNodeGroup"
+2018-09-07T20:53:13-04:00 [✔]  all EKS cluster "eclipse-che" resources has been created
+2018-09-07T20:53:13-04:00 [✔]  saved kubeconfig as "./kubeconfig"
+2018-09-07T20:53:20-04:00 [ℹ]  the cluster has 0 nodes
+2018-09-07T20:53:20-04:00 [ℹ]  waiting for at least 2 nodes to become ready
+2018-09-07T20:53:59-04:00 [ℹ]  the cluster has 3 nodes
+2018-09-07T20:53:59-04:00 [ℹ]  node "ip-192-168-130-163.us-west-2.compute.internal" is ready
+2018-09-07T20:53:59-04:00 [ℹ]  node "ip-192-168-229-138.us-west-2.compute.internal" is ready
+2018-09-07T20:53:59-04:00 [ℹ]  node "ip-192-168-89-239.us-west-2.compute.internal" is ready
+2018-09-07T20:54:05-04:00 [ℹ]  kubectl command should work with "./kubeconfig", try 'kubectl --kubeconfig=./kubeconfig get nodes'
+2018-09-07T20:54:05-04:00 [✔]  EKS cluster "eclipse-che" in "us-west-2" region is ready
 ```
 # Enable Helm & Tiller with RBAC
 
